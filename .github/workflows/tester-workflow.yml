@@ -1,0 +1,24 @@
+name: Build Uploader
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-uploader:
+    runs-on: ubuntu-latest
+    name: Upload the build
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Set node version
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Test Build
+        uses: zohaib-10p/action-to-upload-buildzip@master
+        with:
+          build-directory: 'dist'
+          build-command: 'npm run build'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
