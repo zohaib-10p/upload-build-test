@@ -10,15 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     name: Upload the build
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
       - name: Set node version
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - name: Test Build
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Compress and Upload Build
         uses: zohaib-10p/action-to-upload-buildzip@master
         with:
           build-directory: 'dist'
           build-command: 'npm run build'
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          rest-endpoint: 'http://165.227.88.44:8080/upload-file'
+          rest-file-field: 'buildZip'

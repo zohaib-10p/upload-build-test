@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/zohaib-10p/upload-build-test/issues"
   },
-  "homepage": "https://github.com/zohaib-10p/upload-build-test#readme"
+  "homepage": "https://github.com/zohaib-10p/upload-build-test#readme",
+  "dependencies": {
+    "typescript": "^4.5.5"
+  }
 }
